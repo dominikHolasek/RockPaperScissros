@@ -17,25 +17,47 @@ function getComputerChoice(){
     }
 }
 
-let getPlayerChoice = prompt('Rock, Paper or Scissros?', '');
+let getPlayerChoice;
+let computerWinCount = +0;
+let playerWinCount = +0;
+
+console.log(typeof computerWinCount);
 
 function resultOfRound(computerChoice, playerChoice) {
     computerChoice = computerChoice.toUpperCase();
     playerChoice = playerChoice.toUpperCase();
     if (computerChoice === playerChoice) {
-        return 0;
-    } else if (computerChoice === "PAPER" && playerChoice === "ROCK") {
-        return 1;
-    } else if (computerChoice === "PAPER" && playerChoice === "SCISSORS") {
-        return 2;
-    } else if (computerChoice === "ROCK" && playerChoice === "SCISSORS") {
-        return 1;
-    } else if (computerChoice === "ROCK" && playerChoice === "PAPER") {
-        return 2;
-    } else if (computerChoice === "SCISSORS" && playerChoice === "PAPER") {
-        return 1;
-    } else if (computerChoice === "SCISSORS" && playerChoice === "ROCK") {
-        return 2;
+        return `Draw ${computerChoice} equals ${playerChoice}`;
+    } 
+    else if ((computerChoice === "PAPER" && playerChoice === "ROCK")
+      || (computerChoice === "ROCK" && playerChoice === "SCISSORS") 
+      || (computerChoice === "SCISSORS" && playerChoice === "PAPER") ) {
+        
+        ++computerWinCount;
+        return `Lose: ${computerChoice} beats ${playerChoice}`;
+        
+    } 
+    else if ((computerChoice === "PAPER" && playerChoice === "SCISSORS")
+      || (computerChoice === "ROCK" && playerChoice === "PAPER")
+      || (computerChoice === "SCISSORS" && playerChoice === "ROCK")){
+        
+        ++playerWinCount;
+        return `Win: ${playerChoice} beats ${computerChoice}`;
     }
 }
+
+function game(){
+    while (computerWinCount < 5 || playerWinCount < 5) {
+        getPlayerChoice = prompt('Rock, Paper or Scissros?', '');
+        console.log(resultOfRound(getComputerChoice(), getPlayerChoice));
+    }
+
+    if (playerWinCount > computerWinCount){
+        return 'Player won the whole game';
+    } else {
+        return 'Computer won the whole game'
+    }
+}
+
+game();
 
