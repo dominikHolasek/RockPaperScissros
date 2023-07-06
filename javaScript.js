@@ -48,7 +48,7 @@ function resultOfRound(computerChoice, playerChoice) {
 
 function game(){
     while (computerWinCount < 5 || playerWinCount < 5) {
-        getPlayerChoice = prompt('Rock, Paper or Scissros?', '');
+        getPlayerChoice = prompt('Rock, Paper or Scissors?', '');
         console.log(resultOfRound(getComputerChoice(), getPlayerChoice));
     }
 
