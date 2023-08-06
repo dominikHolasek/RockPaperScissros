@@ -1,0 +1,20 @@
+body{
+    background: rgb(135, 83, 83);
+}
+
+.items {
+    display: flex;
+    width: auto;
+}
+
+#rock {
+    border: 2px solid grey;
+}
+
+#paper {
+    border: 2px solid white;
+}
+
+#scissors {
+    border: 2px solid steelblue;
+}
