@@ -1,3 +1,41 @@
+/* 
+Rewrite to node querySelectorAll and 
+create functions to use in foreach loop, 
+also retype node to array 
+*/
+const rockButton = document.querySelector('#rock');
+rockButton.addEventListener('click', () => {
+    selectedItem = "ROCK";
+    console.log(selectedItem);
+    game();
+});
+
+const paperButton = document.querySelector('#paper');
+paperButton.addEventListener('click', () => {
+    selectedItem = "PAPER";
+    console.log(selectedItem);
+    game();
+});
+
+const scissorsButton = document.querySelector('#scissors');
+scissorsButton.addEventListener('click', () => {
+    selectedItem = 'SCISSORS';
+    console.log(selectedItem);
+    game();
+});
+
+/* 
+    Kdzy kliknu musi se nacist hodnota y buttonu a nasledne soustit dalsi kolo 
+*/
+
+/* Pokud bude mit kterzkoliv y hracu 5 bodu, hra se yastavi a vzpise vyherce
+pro pokracovani bude nutno zmacknout tlacitko reset,
+do tlacitka pro reset vlozim img,
+tlacitko bude reseno v DOMu n0 v html. */
+
+
+
+
 /* pseudocode
 Vztvo59m funkci kter8 budeg enerovat kamen,papir, nuykz
 vztvorim funkci ktera bude prijimat vstup uyivatele
@@ -17,7 +55,7 @@ function getComputerChoice(){
     }
 }
 
-let getPlayerChoice;
+let selectedItem = 'Nothing';
 let computerWinCount = +0;
 let playerWinCount = +0;
 
@@ -47,10 +85,8 @@ function resultOfRound(computerChoice, playerChoice) {
 }
 
 function game(){
-    while (computerWinCount < 5 || playerWinCount < 5) {
-        getPlayerChoice = prompt('Rock, Paper or Scissors?', '');
-        console.log(resultOfRound(getComputerChoice(), getPlayerChoice));
-    }
+    console.log(resultOfRound(getComputerChoice(), selectedItem));
+    console.log(`Player=${playerWinCount}, Computer=${computerWinCount}`);
 
     if (playerWinCount > computerWinCount){
         return 'Player won the whole game';
@@ -59,5 +95,5 @@ function game(){
     }
 }
 
-game();
+//game();
 
