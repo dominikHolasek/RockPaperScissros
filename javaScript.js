@@ -43,7 +43,13 @@ resetButton.addEventListener('click', () =>{
     playerWinCount = +0;
     computerWinCount = +0;
     isOver = false;
+    resultDiv.textContent = "";
 });
+
+const resultDiv = document.querySelector(".results");
+
+
+/* const resultParagraph = document.createElement('p'); */
 
 /* 
     Kdzy kliknu musi se nacist hodnota y buttonu a nasledne soustit dalsi kolo 
@@ -111,7 +117,7 @@ function game(){
     console.log(resultOfRound(getComputerChoice(), selectedItem));
     console.log(`Player=${playerWinCount}, Computer=${computerWinCount}`);
 
-
+    resultDiv.textContent = getWinner(playerWinCount, computerWinCount);
 
     //tohle platilo jen pro puvodni verzi bez interakce s buttony.
     //je potreba do divu pridat text jakmile jeden y hracu dovrsi hodnoty 5ti vyher.
@@ -136,6 +142,4 @@ function getWinner(fPlayerWinCount, fComputerWinCount){
         return `Player have ${fPlayerWinCount} wins, Computer have ${fComputerWinCount} wins`
     }
 }
-
-//game();
 
