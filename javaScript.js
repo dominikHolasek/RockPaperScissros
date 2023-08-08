@@ -43,32 +43,14 @@ resetButton.addEventListener('click', () =>{
     playerWinCount = +0;
     computerWinCount = +0;
     isOver = false;
-    resultDiv.textContent = "";
+    resultDiv.textContent = "o";
 });
 
 const resultDiv = document.querySelector(".results");
+resultDiv.textContent = 'o';
 
 
 /* const resultParagraph = document.createElement('p'); */
-
-/* 
-    Kdzy kliknu musi se nacist hodnota y buttonu a nasledne soustit dalsi kolo 
-*/
-
-/* Pokud bude mit kterzkoliv y hracu 5 bodu, hra se yastavi a vzpise vyherce
-pro pokracovani bude nutno zmacknout tlacitko reset,
-do tlacitka pro reset vlozim img,
-tlacitko bude reseno v DOMu n0 v html. */
-
-
-
-
-/* pseudocode
-Vztvo59m funkci kter8 budeg enerovat kamen,papir, nuykz
-vztvorim funkci ktera bude prijimat vstup uyivatele
-vztvorim podminkz pro vzhru 
-vzhrava ten kdo ma 5 vzher
- */
 
 function getComputerChoice(){
     let generatedNumber = Math.random() * 100;
@@ -81,8 +63,6 @@ function getComputerChoice(){
         return 'SCISSORS';
     }
 }
-
-
 
 console.log(typeof computerWinCount);
 
@@ -118,20 +98,7 @@ function game(){
     console.log(`Player=${playerWinCount}, Computer=${computerWinCount}`);
 
     resultDiv.textContent = getWinner(playerWinCount, computerWinCount);
-
-    //tohle platilo jen pro puvodni verzi bez interakce s buttony.
-    //je potreba do divu pridat text jakmile jeden y hracu dovrsi hodnoty 5ti vyher.
-    
-    /* if (playerWinCount > computerWinCount){
-        return 'Player won the whole game';
-    } else {
-        return 'Computer won the whole game'
-    } */
-
-
 }
-
-
 
 function getWinner(fPlayerWinCount, fComputerWinCount){
     if(fPlayerWinCount === 5){
