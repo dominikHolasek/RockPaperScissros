@@ -1,3 +1,8 @@
+let selectedItem = 'Nothing';
+let computerWinCount = +0;
+let playerWinCount = +0;
+let isOver = false;
+
 /* 
 Rewrite to node querySelectorAll and 
 create functions to use in foreach loop, 
@@ -7,6 +12,9 @@ const rockButton = document.querySelector('#rock');
 rockButton.addEventListener('click', () => {
     selectedItem = "ROCK";
     console.log(selectedItem);
+    if (isOver){
+        return;
+    }
     game();
 });
 
@@ -14,6 +22,9 @@ const paperButton = document.querySelector('#paper');
 paperButton.addEventListener('click', () => {
     selectedItem = "PAPER";
     console.log(selectedItem);
+    if (isOver){
+        return;
+    }
     game();
 });
 
@@ -21,7 +32,17 @@ const scissorsButton = document.querySelector('#scissors');
 scissorsButton.addEventListener('click', () => {
     selectedItem = 'SCISSORS';
     console.log(selectedItem);
+    if (isOver){
+        return;
+    }
     game();
+});
+
+const resetButton = document.querySelector("#reset");
+resetButton.addEventListener('click', () =>{
+    playerWinCount = +0;
+    computerWinCount = +0;
+    isOver = false;
 });
 
 /* 
@@ -55,9 +76,7 @@ function getComputerChoice(){
     }
 }
 
-let selectedItem = 'Nothing';
-let computerWinCount = +0;
-let playerWinCount = +0;
+
 
 console.log(typeof computerWinCount);
 
@@ -85,13 +104,36 @@ function resultOfRound(computerChoice, playerChoice) {
 }
 
 function game(){
+    if (playerWinCount >= 5 || computerWinCount >= 5){
+        isOver = true;
+        return;
+    }
     console.log(resultOfRound(getComputerChoice(), selectedItem));
     console.log(`Player=${playerWinCount}, Computer=${computerWinCount}`);
 
-    if (playerWinCount > computerWinCount){
+
+
+    //tohle platilo jen pro puvodni verzi bez interakce s buttony.
+    //je potreba do divu pridat text jakmile jeden y hracu dovrsi hodnoty 5ti vyher.
+    
+    /* if (playerWinCount > computerWinCount){
         return 'Player won the whole game';
     } else {
         return 'Computer won the whole game'
+    } */
+
+
+}
+
+
+
+function getWinner(fPlayerWinCount, fComputerWinCount){
+    if(fPlayerWinCount === 5){
+        return `Player Win with ${fPlayerWinCount} wins, Computer lost with ${fComputerWinCount} wins`;
+    } else if(fComputerWinCount === 5){
+        return `Player Lost with ${fPlayerWinCount} wins, Computer Win with ${fComputerWinCount} wins`;
+    } else {
+        return `Player have ${fPlayerWinCount} wins, Computer have ${fComputerWinCount} wins`
     }
 }
 
