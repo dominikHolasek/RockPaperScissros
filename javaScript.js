@@ -43,11 +43,11 @@ resetButton.addEventListener('click', () =>{
     playerWinCount = +0;
     computerWinCount = +0;
     isOver = false;
-    resultDiv.textContent = "o";
+    resultDiv.textContent = "Start by clicking rock, paper or scissors.";
 });
 
 const resultDiv = document.querySelector(".results");
-resultDiv.textContent = 'o';
+resultDiv.textContent = 'Start by clicking rock, paper or scissors.';
 
 
 /* const resultParagraph = document.createElement('p'); */
@@ -70,14 +70,14 @@ function resultOfRound(computerChoice, playerChoice) {
     computerChoice = computerChoice.toUpperCase();
     playerChoice = playerChoice.toUpperCase();
     if (computerChoice === playerChoice) {
-        return `Draw ${computerChoice} equals ${playerChoice}`;
+        return `Draw ${computerChoice} equals ${playerChoice} \n ${playerWinCount}:${computerWinCount}`;
     } 
     else if ((computerChoice === "PAPER" && playerChoice === "ROCK")
       || (computerChoice === "ROCK" && playerChoice === "SCISSORS") 
       || (computerChoice === "SCISSORS" && playerChoice === "PAPER") ) {
         
         ++computerWinCount;
-        return `Lose: ${computerChoice} beats ${playerChoice}`;
+        return `Lose: ${computerChoice} beats ${playerChoice} \n ${playerWinCount}:${computerWinCount}`;
         
     } 
     else if ((computerChoice === "PAPER" && playerChoice === "SCISSORS")
@@ -85,24 +85,28 @@ function resultOfRound(computerChoice, playerChoice) {
       || (computerChoice === "SCISSORS" && playerChoice === "ROCK")){
         
         ++playerWinCount;
-        return `Win: ${playerChoice} beats ${computerChoice}`;
+        return `Win: ${playerChoice} beats ${computerChoice} \n ${playerWinCount}:${computerWinCount}`;
     }
 }
 
 function game(){
-    if (playerWinCount >= 5 || computerWinCount >= 5){
-        isOver = true;
-        return;
-    }
-    console.log(resultOfRound(getComputerChoice(), selectedItem));
+    
+    let resultText = resultOfRound(getComputerChoice(), selectedItem);
     console.log(`Player=${playerWinCount}, Computer=${computerWinCount}`);
 
-    resultDiv.textContent = getWinner(playerWinCount, computerWinCount);
+    resultDiv.textContent = resultText;
+    if (playerWinCount >= 5 || computerWinCount >= 5){
+        isOver = true;
+        resultDiv.textContent = getWinner(playerWinCount, computerWinCount);
+        return;
+    }
+    
+    
 }
 
 function getWinner(fPlayerWinCount, fComputerWinCount){
     if(fPlayerWinCount === 5){
-        return `Player Win with ${fPlayerWinCount} wins, Computer lost with ${fComputerWinCount} wins`;
+        return `Player Win with ${fPlayerWinCount} wins, Computer lost with ${fComputerWinCount} wins` + ". Press reset to play again.";
     } else if(fComputerWinCount === 5){
         return `Player Lost with ${fPlayerWinCount} wins, Computer Win with ${fComputerWinCount} wins`;
     } else {
