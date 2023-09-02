@@ -1,18 +1,27 @@
 body{
-    background: rgb(135, 83, 83);
+    text-align: center;
+    max-width: 600px;
+    margin: auto;
+    background: #FFF6E0;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.content{
+    background: #D8D9DA;
 }
 
 h1,
 .results {
     text-align: center;
-    color: black;   
+    color: #272829;   
 }
 
 .items {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    
     /* flex-basis: 2rem; */
 }
 
@@ -21,6 +30,7 @@ h1,
     height: 10rem;
     width: 10rem;
     text-align: center;
+    margin: 1rem;
 }
 
 button {
@@ -35,16 +45,10 @@ img {
     
 }
 
-#rock {
-    border: 2px solid black;
-}
-
-#paper {
-    border: 2px solid grey;
-}
-
+#rock,
+#paper,
 #scissors {
-    border: 2px solid steelblue;
+    border: 2px solid #61677A;
 }
 
 #rock:hover,
